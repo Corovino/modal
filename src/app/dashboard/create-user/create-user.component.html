@@ -1,0 +1,65 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-primary fixed-top">
+  <a class="navbar-brand" href="#">ZINOBE</a>
+  <button class="navbar-toggler hidden-sm-up" type="button" (click)="isNavbarCollapsed = !isNavbarCollapsed" data-target="#navbarsDefault" aria-controls="navbarsDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div [ngbCollapse]="isNavbarCollapsed" class="collapse navbar-collapse" id="navbarsDefault">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item dropdown" ngbDropdown>
+        <a class="nav-link dropdown-toggle" id="id01"  ngbDropdownToggle> Salir </a>
+        <div class="dropdown-menu" aria-labelledby="id01" ngbDropdownMenu>
+
+          <div class="dropdown-item" >{{user?.name}}</div>
+          <div class="dropdown-item" (click)="logout()">{{user?.role}}</div>
+          <div class="dropdown-item" (click)="logout()">Salir</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+         <section id="registrationPage">
+            <div class="container p-5">
+              <div class="row mt-5">
+                <div class="col-lg-4 offset-lg-4">
+                  
+                  <div class="card bg-light">
+                    <div class="card-body">
+                      <h4 class="text-center">Crear usuario</h4>
+                      <hr>
+                      <form>
+                        <div class="form-group">
+                          <label class="form-control-label">Name</label>
+                          <input type="text" name="name" class="form-control" [(ngModel)]="name">
+                        </div>
+                        <div class="form-group">
+                          <label class="form-control-label">Email</label>
+                          <input type="email" name="email" class="form-control" [(ngModel)]="email">
+                        </div>
+                        <div class="form-group">
+                          <label class="form-control-label">Password</label>
+                          <input type="password" name="password" class="form-control" [(ngModel)]="password">
+                        </div>
+                        <div class="form-group">
+                          <label class="form-control-label">Confirm Password</label>
+                          <input type="password" name="password1" class="form-control" [(ngModel)]="password1">
+                        </div>
+                        <div class="form-group">
+                          <label class="form-control-label">Numero de cédula</label>
+                          <input type="text" name="number_id" class="form-control" [(ngModel)]="number_id">
+                        </div>
+                        <hr>
+                        <button type="button" class="btn btn-primary btn-block" (click)="createUser()" [disabled]="btnDisabled">Register</button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+    </div>
+  </div>
+</div>

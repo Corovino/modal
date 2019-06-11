@@ -1,0 +1,27 @@
+
+  <div class="form-group form-inline">
+      Filtrar por estado : <input class="form-control ml-2" type="text" [(ngModel)]="searchTerm"/>
+  </div>
+
+<table class="table table-striped">
+  <thead>
+  <tr >
+    <th scope="col">#</th>
+    <th  *ngFor="let header of headers" scope="col">{{header.name}}</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let credit of data | creditFilter:searchTerm; index as i">
+    <th scope="row">{{ i + 1 }}</th>
+    <td>
+      <ngb-highlight [result]="credit?.user_id.name"></ngb-highlight>
+    </td>
+    <td><ngb-highlight [result]="credit.requested_value | number"></ngb-highlight></td>
+    <td><ngb-highlight [ngClass]="{
+                                    'badge badge-success': credit.state == 'aprobado',
+                                    'badge badge-danger': credit.state == 'rechazado' }" 
+                      [result]="credit.state"></ngb-highlight></td>
+    <td><ngb-highlight [result]="credit.date_to_pay"></ngb-highlight></td>
+  </tr>
+  </tbody>
+</table>
